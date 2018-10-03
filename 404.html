@@ -27,16 +27,18 @@
           (window.location.port ? ':' + window.location.port : '');
       }
       var origin = getOrigin();
+      var repo = noAmp(window.location.pathname.split("/")[0]);
+
       var pathname = noAmp(window.location.pathname.split('/').join('%2F'));
       var query = noAmp(window.location.search.slice(1));
       var hash = noAmp(window.location.hash.slice(1));
-      var redirectTo = origin + '/' + pathname + '/?' +
+      var redirectTo = origin + '/' + repo + '/?' +
         'redirect=true' +
         '&pathname=' + pathname +
         '&query=' + query +
         '&hash=' + hash;
-      console.log(redirectTo);
-      //window.location.replace(redirectTo);
+      console.log("REDIRECTING: ", redirectTo);
+      window.location.replace(redirectTo);
     </script>
   </body>
 </html>
